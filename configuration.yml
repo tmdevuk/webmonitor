@@ -23,3 +23,6 @@ circuitBreaker:
   maxErrors: 1
   callTimeout: 10
   resetTimeout: 10
+
+
+webmonitorTestUrl: http://www.google.co.uk

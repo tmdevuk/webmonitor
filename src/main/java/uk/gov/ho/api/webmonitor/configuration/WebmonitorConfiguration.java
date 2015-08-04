@@ -44,6 +44,12 @@ public class WebmonitorConfiguration extends Configuration {
   @JsonProperty("circuitBreaker")
   private CircuitBreakerConfiguration circuitBreaker;
 
+  @NotEmpty
+  @JsonProperty("webmonitorTestUrl")
+  private String webmonitorTestUrl;
+
+
+
   /**
    * Get the swagger resource package.
    * <p/>
@@ -74,8 +80,9 @@ public class WebmonitorConfiguration extends Configuration {
   public CircuitBreakerConfiguration getCircuitBreaker() {
     return circuitBreaker;
   }
-  
-  
- 
+
+  public String getWebmonitorTestUrl()  {
+    return webmonitorTestUrl;
+  }
   
 }
