@@ -1,8 +1,11 @@
 package uk.gov.ho.api.webmonitor.resources;
 
 
+import uk.gov.ho.api.webmonitor.core.UrlResponse;
 import uk.gov.ho.api.webmonitor.core.WebMonitorClient;
+import uk.gov.ho.api.webmonitor.dao.UrlResponseDao;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,11 +15,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 
-
 @Path("/webmonitor")
-@Produces(MediaType.TEXT_PLAIN)
+@Produces(MediaType.APPLICATION_JSON)
 
 public class WebmonitorResource {
+
+
   TimerTask task = new WebMonitorClient();
   Timer timer = new Timer();
 
@@ -33,6 +37,9 @@ public class WebmonitorResource {
 
 
   public String start() {
+
+
+
     String started = "Started";
     timer.schedule(task, 3000, 3000);
     return started;
@@ -51,6 +58,26 @@ public class WebmonitorResource {
     return stopped;
 
   }
+
+
+
+  /** get all responses. */
+  @Path("/responses")
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+
+  public List<UrlResponse> getAllResponses() {
+
+    UrlResponseDao dao = new UrlResponseDao();
+    List myList = dao.getAllUrlResponses();
+    return myList;
+
+  }
+
+
+
+
+
 
 }
   

@@ -1,9 +1,11 @@
 package uk.gov.ho.api.webmonitor.core;
 
+import java.util.Date;
+
 /**
  * Created by mooret on 04/08/15.
  */
-public class RequestLogItem {
+public class UrlResponse {
 
 
 
@@ -11,12 +13,19 @@ public class RequestLogItem {
   private String urlText;
   private String responseText;
   private String responseCode;
-  public RequestLogItem() {}
+  private double responseDuration;
+  private Date responseDate;
 
-  public RequestLogItem (String urltext, String responsetext, String responsecode) {
+  public UrlResponse() {}
+
+  /** create new response. */
+  public UrlResponse(String urltext, String responsetext, String responsecode,
+                     double responseduration, Date responsedate) {
     this.urlText = urltext;
     this.responseText = responsetext;
     this.responseCode = responsecode;
+    this.responseDuration = responseduration;
+    this.responseDate = responsedate;
   }
 
 
@@ -51,5 +60,26 @@ public class RequestLogItem {
   public void setResponseCode( String codetext ) {
     this.responseCode = codetext;
   }
+
+  public double getResponseDuration() {
+    return responseDuration;
+  }
+
+  public void setResponseDuration(double responseduration) {
+    this.responseDuration = responseduration;
+  }
+
+  public Date getResponseDate() {
+    return responseDate;
+  }
+
+  public void setResponseDate( Date responsedate ) {
+    this.responseDate = responsedate;
+  }
+
+
+
+
+
 
 }

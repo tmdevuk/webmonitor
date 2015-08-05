@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="uk.gov.ho.api.webmonitor.core.RequestLogItem" table="RequestLog">
+   <class name="uk.gov.ho.api.webmonitor.core.UrlResponse" table="UrlResponseLog">
       <meta attribute="class-description">
          This class contains the employee detail. 
       </meta>
@@ -14,5 +14,8 @@
       <property name="urlText" column="UrlText" type="string"/>
       <property name="responseText" column="ResponseText" type="string"/>
       <property name="responseCode" column="ResponseCode" type="string"/>
+      <property name="responseDuration" column="ResponseDuration" type="double"/>
+      <property name="responseDate" column="ResponseDate" type="date"/>
+
    </class>
 </hibernate-mapping>
