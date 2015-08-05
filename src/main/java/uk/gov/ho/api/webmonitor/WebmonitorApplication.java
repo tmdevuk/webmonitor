@@ -6,6 +6,7 @@ package uk.gov.ho.api.webmonitor;
 import uk.gov.ho.api.webmonitor.configuration.WebmonitorConfiguration;
 //import uk.gov.ho.api.webmonitor.core.WebMonitorClient;
 import uk.gov.ho.api.webmonitor.dependencyinjection.EventModule;
+import uk.gov.ho.api.webmonitor.resources.RequestLogItemResource;
 import uk.gov.ho.api.webmonitor.resources.WebmonitorResource;
 
 import com.hubspot.dropwizard.guice.GuiceBundle;
@@ -58,7 +59,6 @@ public class WebmonitorApplication extends Application<WebmonitorConfiguration> 
     bootstrap.addBundle(guiceBundle);
     //bootstrap.addBundle(new CustomSwaggerBundleConfiguration());
   }
-
   /**
    * Run the web server. Adds endpoints.
    *
@@ -74,10 +74,10 @@ public class WebmonitorApplication extends Application<WebmonitorConfiguration> 
   public void run(WebmonitorConfiguration configuration, Environment environment) {
 
     environment.jersey().register(new WebmonitorResource());
-
+    environment.jersey().register(new RequestLogItemResource());
 
   }
-    
+
 
     
 
