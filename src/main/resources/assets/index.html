@@ -1,0 +1,39 @@
+
+<!doctype html>
+<html>
+
+
+<head>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="angular-1.4.3/angular.min.js"></script>
+  <script src="angular-1.4.3/angular-resource.min.js"></script>
+  <script src="webmonitor.js"></script>
+
+</head>
+
+<body ng-controller="webmonitorController">
+
+<div id="chartdiv"></div>
+
+<br/>
+
+<table class="table table-striped" border="1" style="width:100%">
+  <tr ng-repeat="urlresponse in urlresponses | orderBy: 'responseDate':true">
+
+    <td>{{urlresponse.responseDate | date: 'yyyy-MM-dd HH:mm:ss Z'}}</td>
+    <td>{{urlresponse.urlText}}</td>
+    <td>{{urlresponse.responseText}}</td>
+    <td>{{urlresponse.responseCode}}</td>
+    <td>{{urlresponse.responseDuration}}</td>
+
+  </tr>
+</table>
+
+</body>
+
+</html>
+
+
+
+

@@ -13,9 +13,9 @@
       </id>
       <property name="urlText" column="UrlText" type="string"/>
       <property name="responseText" column="ResponseText" type="string"/>
-      <property name="responseCode" column="ResponseCode" type="string"/>
+      <property name="responseCode" column="ResponseCode" type="integer"/>
       <property name="responseDuration" column="ResponseDuration" type="double"/>
-      <property name="responseDate" column="ResponseDate" type="date"/>
+      <property name="responseDate" column="ResponseDate" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime"/>
 
    </class>
 </hibernate-mapping>

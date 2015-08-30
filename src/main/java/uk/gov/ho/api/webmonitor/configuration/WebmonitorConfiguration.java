@@ -22,67 +22,20 @@ public class WebmonitorConfiguration extends Configuration {
   public HttpClientConfiguration getHttpClientConfiguration() {
     return httpClient;
   }
-  
-  @NotEmpty
-  @JsonProperty("uiUri")
-  private String uiUri;
 
-  @NotEmpty
-  @JsonProperty("ordsEndpoint")
-  private String ordsEndpoint;
+  @JsonProperty
+  public String getWebmonitorTestUrl() {
+    return webmonitorTestUrl;
+  }
 
-  @NotNull
-  @JsonProperty("swagger")
-  private SwaggerBundleConfiguration swagger;
-
-  @JsonProperty(value = "keyStorePath", required = false) private String keyStorePath;
-
-  @Nullable
-  @JsonProperty(value = "keyStorePassword", required = false)
-  private String keyStorePassword;
-  @NotNull
-  @JsonProperty("circuitBreaker")
-  private CircuitBreakerConfiguration circuitBreaker;
+  @JsonProperty
+  public void setWebmonitorTestUrl(String webmonitorTestUrl) {
+    this.webmonitorTestUrl = webmonitorTestUrl;
+  }
 
   @NotEmpty
   @JsonProperty("webmonitorTestUrl")
   private String webmonitorTestUrl;
 
 
-
-  /**
-   * Get the swagger resource package.
-   * <p/>
-   *
-   * @return The swagger resource package
-   */
-  
-  public SwaggerBundleConfiguration swaggerBundleConfiguration() {
-    return swagger;
-  }
-
-  public String getUiUri() {
-    return uiUri;
-  }
-
-  public String getOrdsEndpoint() {
-    return ordsEndpoint;
-  }
-
-  public String getKeyStorePath() {
-    return keyStorePath;
-  }
-
-  public String getKeyStorePassword() {
-    return keyStorePassword;
-  }
-
-  public CircuitBreakerConfiguration getCircuitBreaker() {
-    return circuitBreaker;
-  }
-
-  public String getWebmonitorTestUrl()  {
-    return webmonitorTestUrl;
-  }
-  
 }

@@ -21,43 +21,24 @@ import javax.ws.rs.core.MediaType;
  * Created by mooret on 04/08/15.
  */
 
-@Path("/response")
+@Path("/responses")
 @Produces(MediaType.APPLICATION_JSON)
-
 
 public class UrlResponseResource {
 
+  /** get all responses. (max limit set in dao) */
 
-
-  /** sample doc. */
-  public UrlResponseResource() {
-
-  }
-
-
-
-  /** get all responses. */
   @GET
-  @Produces(MediaType.APPLICATION_JSON)
 
-  public List getAllResponses() {
-
+  public List<UrlResponse> getAllResponses() {
     UrlResponseDao dao = new UrlResponseDao();
     return dao.getAllUrlResponses();
 
-
   }
 
-  //public String addUser(@FormParam("firstname") String fname,
-  //@FormParam("lastname") String lname) {
 
 
 
-  //@GET
-  //@Produces(MediaType.TEXT_PLAIN)
-  //public String getNamedGreeting() {
-  //  return "Hello";
-  //}
 }
 
 

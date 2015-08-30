@@ -1,6 +1,8 @@
 package uk.gov.ho.api.webmonitor.resources;
 
 
+import uk.gov.ho.api.webmonitor.WebmonitorApplication;
+import uk.gov.ho.api.webmonitor.configuration.WebmonitorConfiguration;
 import uk.gov.ho.api.webmonitor.core.UrlResponse;
 import uk.gov.ho.api.webmonitor.core.WebMonitorClient;
 import uk.gov.ho.api.webmonitor.dao.UrlResponseDao;
@@ -14,38 +16,43 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
 @Path("/webmonitor")
 @Produces(MediaType.APPLICATION_JSON)
 
 public class WebmonitorResource {
 
+  private Timer timer;
+  private TimerTask task;
+  private  String url;
 
-  TimerTask task = new WebMonitorClient();
-  Timer timer = new Timer();
-
-
-  public WebmonitorResource() {
-
+  public String getUrl() {
+    return url;
   }
 
-  /** main rest point. */
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public WebmonitorResource(WebmonitorConfiguration configuration) {
+    this.setUrl(configuration.getWebmonitorTestUrl());
+  }
+
+  /** start poll. */
   @Path("/start")
   @GET
   @Produces(MediaType.TEXT_PLAIN)
 
-
-
   public String start() {
 
 
-
+    timer = new Timer();
+    task = new WebMonitorClient(getUrl());
     String started = "Started";
-    timer.schedule(task, 3000, 3000);
+    timer.schedule(task, 0, 3000);
     return started;
 
   }
-  /** stop service. */
+  /** stop poll. */
   @Path("/stop")
   @GET
   @Produces(MediaType.TEXT_PLAIN)
@@ -60,19 +67,6 @@ public class WebmonitorResource {
   }
 
 
-
-  /** get all responses. */
-  @Path("/responses")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-
-  public List<UrlResponse> getAllResponses() {
-
-    UrlResponseDao dao = new UrlResponseDao();
-    List myList = dao.getAllUrlResponses();
-    return myList;
-
-  }
 
 
 

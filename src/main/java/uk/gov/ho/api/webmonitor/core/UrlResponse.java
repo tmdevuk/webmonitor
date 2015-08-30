@@ -1,5 +1,7 @@
 package uk.gov.ho.api.webmonitor.core;
 
+import org.joda.time.DateTime;
+
 import java.util.Date;
 
 /**
@@ -12,15 +14,16 @@ public class UrlResponse {
   private int id;
   private String urlText;
   private String responseText;
-  private String responseCode;
+  private int responseCode;
   private double responseDuration;
-  private Date responseDate;
+  private DateTime responseDate;
 
   public UrlResponse() {}
 
+
   /** create new response. */
-  public UrlResponse(String urltext, String responsetext, String responsecode,
-                     double responseduration, Date responsedate) {
+  public UrlResponse(String urltext, String responsetext, int responsecode,
+                     double responseduration, DateTime responsedate) {
     this.urlText = urltext;
     this.responseText = responsetext;
     this.responseCode = responsecode;
@@ -53,12 +56,12 @@ public class UrlResponse {
     this.responseText = responsetext;
   }
 
-  public String getResponseCode() {
+  public int getResponseCode() {
     return responseCode;
   }
 
-  public void setResponseCode( String codetext ) {
-    this.responseCode = codetext;
+  public void setResponseCode( int code ) {
+    this.responseCode = code;
   }
 
   public double getResponseDuration() {
@@ -69,11 +72,11 @@ public class UrlResponse {
     this.responseDuration = responseduration;
   }
 
-  public Date getResponseDate() {
+  public DateTime getResponseDate() {
     return responseDate;
   }
 
-  public void setResponseDate( Date responsedate ) {
+  public void setResponseDate( DateTime responsedate ) {
     this.responseDate = responsedate;
   }
 

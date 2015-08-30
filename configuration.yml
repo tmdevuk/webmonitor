@@ -1,28 +1,11 @@
 
-# Create a temporary in-memory database 
 
-uiUri: dummydata
-ordsEndpoint: dummydata
+server:
+  rootPath: /application/*
 
-
-keyStorePath: dummydata
-keyStorePassword: dummydata
-
-
-swagger:
-  title: Life Events API
-  resourcePackage: uk.gov.ho.api.lev.resources_TM
-  contact: Home Office Digital
-  version: 1.0
 
 # Logging settings.
 logging:
   level: ALL
-
-circuitBreaker:
-  maxErrors: 1
-  callTimeout: 10
-  resetTimeout: 10
-
 
 webmonitorTestUrl: http://www.google.co.uk
